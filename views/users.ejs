@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <br>
+    
+    <div class='container'>
+        <div class="row" >
+            
+            <div class="col-md-4"> <h2>Usuários Cadastrados</h2> </div>
+            
+            <div class="col-md-4 offset-md-4"> <a href="/" class="btn btn-success" >Cadastrar Usuario</a> </div>
+            
+        </div>
+
+        <table class="table talbe-bordered">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Email</th>
+                    <th>Sexo</th>
+                    <th>CPF</th>
+                    <th>RG</th>
+                    <th>Telefone</th>
+                    <th>Data de Nascimento</th>
+                    <th>Estado Civil</th>
+                    <th>Cep</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% lista.forEach(client => { %>
+                    <tr>
+                        <td><%= client.codigo %></td>
+                        <td><%= client.nome %></td>
+                        <td><%= client.sobreNome %></td>
+                        <td><%= client.email %></td>
+                        <td><%= client.sexo %></td>
+                        <td><%= client.cpf %></td>
+                        <td><%= client.rg %></td>
+                        <td><%= client.telefone %></td>
+                        <td><%= client.data %></td>
+                        <td><%= client.estado %></td>
+                        <td><%= client.cep %></td>
+                        <td><%= client.endereco %></td>
+                        
+                        <td>
+                            <div class="col">
+                                <form method="POST" action="/clientes/del/<%=client.codigo %>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                    
+                                    </form>
+        
+                            </div>
+
+
+
+                            <div class="col">
+                                <form method="POST"  action="/clientes/<%=client.codigo %>">
+                                    <button class="btn btn-primary">Editar</button>
+                                    
+                                    </form>
+    
+                            </div>
+                            
+                        </td>
+                    </tr>
+               <% })%>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

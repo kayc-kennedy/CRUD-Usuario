@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Cadastro Basico</title>
+</head>
+<body>
+    <% if (locals.erroMsg) { %>
+        <p><%= erroMsg %></p>
+    <% } %> 
+
+
+
+    <form id="formDados" action="/clientes" method="POST" >
+
+        <label for="codigo">Código</label>
+        <input name="codigo" id="codigo" type="text" value="<%= cliente.codigo %>" >
+        <br>
+
+        <label for="nome">Nome</label>
+        <input name="nome" id="nome" type="text" value="<%= cliente.nome %>">
+        
+        <br>
+        <label for="sobreNome">Sobrenome</label>
+        <input name="sobreNome" id="sobreNome" type="text" value="<%= cliente.sobreNome %>">
+
+        <br>
+        <label for="senha">Senha</label>
+        <input name="senha" id="senha" type="password" value="<%= cliente.senha %>">
+
+        <br>
+        
+        <div class='form-row'>
+            <label for="email">Email</label>
+            <input name="email" id="email" type="text" value="<%= cliente.email %>">
+        </div>
+
+        <br>
+        <label for="sexo">sexo</label>
+        <input name="sexo" id="sexo" type="text" value="<%= cliente.sexo %>">
+
+        <br>
+        <label for="cpf">cpf</label>
+        <input name="cpf" id="cpf" type="text" value="<%= cliente.cpf %>">
+
+        <br>
+        <label for="telefone">telefone</label>
+        <input name="telefone" id="telefone" type="text" value="<%= cliente.cpf %>">
+
+        <br>
+        <label for="data">Data de Nascimento</label>
+        <input name="data" id="data" type="date" value="<%= cliente.data %>">
+
+        <br>
+        <label for="estado">Estado Civil </label>
+        <select name="estado" id="estado">
+            <option value="1-Solteiro"></option>
+            <option value="2-Casado"></option>
+            <option value="3-Divorciado"></option>
+            <option value="4-Viúvo"></option>
+            <option value="5-Separado"></option>
+        </select>
+
+            <br>
+            <input type="submit" value="<%= cliente.estado %>">
+
+        <br>
+    </form><br>
+    <!-- <button type="submit" formmethod="GET" formaction="/clientes" form="formDados">Novo</button> -->
+    <!-- <a href="/clientes">Novo</a> -->
+    <form action=""></form>
+    <button onclick="window.location.href='/clientes';">Novo</button>
+    <button type="submit" form="formDados" >Salvar</button>
+
+    <% if (cliente.codigo > 0) { %>
+        <button type="submit" formmethod="POST" formaction="/clientes/del/<%= cliente.codigo %>" form="formDados">Excluir</button>
+    <% } %> 
+    
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+        </tr>
+        <% for( let i = 0; i < lista.length; i++ ) { %>
+            <tr>
+                <td><%= lista[i].codigo %></td>
+                <td><%= lista[i].nome %></td>
+                <td><%= lista[i].sobreNome %></td>
+                <td><%= lista[i].senha %></td>
+                <td><%= lista[i].email %></td>
+                <td><%= lista[i].sexo %></td>
+                <td><%= lista[i].cpf %></td>
+                <td><%= lista[i].telefone %></td>
+                <td><%= lista[i].data %></td>
+                <td><%= lista[i].estado %></td>
+                <td><a href="/clientes/<%= lista[i].codigo %>">Editar</a></td>
+
+                <form action="/clientes/del/<%= lista[i].codigo %>" method="POST">
+                    <td> <button href="">Excluir</button> </td>
+                </form>
+                
+                
+            </tr>
+        <% } %>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
